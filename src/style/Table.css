@@ -1,0 +1,12 @@
+table,th,td {
+    border: 1px solid black;
+}
+
+table {
+    width: 100%;
+}
+
+.daftar {
+    margin-left: 50px;
+    margin-right: 50px;
+}

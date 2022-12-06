@@ -1,0 +1,25 @@
+{
+  "daftarBuku": [
+    {
+      "judul": "Si kancil",
+      "deskripsi": "Si kancil pencuri timun",
+      "tahunTerbit": "2010",
+      "pengarang": "M.B. Rahimsyah A.R. ",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "judul": "Keong emas",
+      "deskripsi": "Cerita rakyat keong mas yang melegenda",
+      "tahunTerbit": "2010",
+      "pengarang": "Arni Windana"
+    },
+    {
+      "judul": "asssafsasdfasf",
+      "deskripsi": "ddddwawdwdawdadaw",
+      "pengarang": "dddddwdadadawd",
+      "tahunTerbit": "dddddwadadawdawdadwa",
+      "id": 3
+    }
+  ]
+}
