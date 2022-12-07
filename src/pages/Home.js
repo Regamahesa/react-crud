@@ -4,6 +4,7 @@ import React, {useEffect ,useState } from 'react'
 export default function Home() {
     const [buku, setBuku] = useState([]);
 
+    // Fungsi getAll untuk melihat semua data 
     const getAll = () => {
         axios.get("http://localhost:8000/daftarBuku")
         .then((res) => {
@@ -13,11 +14,14 @@ export default function Home() {
         })
     }
 
+     //Fungsi useEffect  menambahkan kemampuan untuk melakukan “efek samping” dari sebuah function component.
     useEffect(() => {
         getAll();
     }, [])
 
+    // fungsi deletBuku adalah untuk mengahapus data sesuai idnya 
     const deleteBuku =async (id) => {
+         // Async-await bisa dikatakan sebagai cara mudah menggunakan JavaScript Promise yang agak sulit dipahami.
         await axios.delete("http://localhost:8000/daftarBuku/" + id)
         .then(() =>{
             alert("Sukses Delete")

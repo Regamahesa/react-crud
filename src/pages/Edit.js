@@ -4,6 +4,7 @@ import { Form, InputGroup } from 'react-bootstrap'
 import { useHistory, useParams } from 'react-router-dom'
 
 export default function Edit() {
+  // useState di panggil dalam function component untuk menambahkan suatu state lokal.
   const param = useParams();
   const [ judul, setJudul]  = useState("");
   const [ deskripsi, setDeskripsi ] = useState("");
@@ -12,6 +13,7 @@ export default function Edit() {
 
   const history = useHistory();
 
+  //Fungsi useEffect  menambahkan kemampuan untuk melakukan “efek samping” dari sebuah function component.
   useEffect(() => {
     axios
     .get("http://localhost:8000/daftarBuku/" + param.id)
@@ -27,9 +29,10 @@ export default function Edit() {
     })
   },[]);
 
+  // mengganti data yang lama dengan data yang baru 
   const submitActionHandler = async (e) => {
     e.preventDefault();
-
+     // Async-await bisa dikatakan sebagai cara mudah menggunakan JavaScript Promise yang agak sulit dipahami.
     await axios.put("http://localhost:8000/daftarBuku/" + param.id, {
     judul: judul,
     deskripsi: deskripsi,
@@ -37,6 +40,7 @@ export default function Edit() {
     tahunTerbit: tahunTerbit
   })
   .then(() => {
+    // berfungsi ngepush secara otomatis 
     history.push("/");
   })
   .catch((error) => {

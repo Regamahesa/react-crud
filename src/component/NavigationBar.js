@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { Button, Form, InputGroup } from "react-bootstrap";
 export default function NavigationBar() {
+   // useState di panggil dalam function component untuk menambahkan suatu state lokal.
   const [show, setShow] = useState(false);
   const [ judul, setJudul ] = useState("");
   const [ deskripsi, setDeskripsi]  = useState("");
@@ -14,10 +15,12 @@ export default function NavigationBar() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // method addBUku berfungsi menambahkan data 
   const addBuku = async (e) => {
     e.preventDefault();
 
     try {
+      // Async-await bisa dikatakan sebagai cara mudah menggunakan JavaScript Promise yang agak sulit dipahami.
       await axios.post("http://localhost:8000/daftarBuku", {
         judul: judul,
         deskripsi: deskripsi,
