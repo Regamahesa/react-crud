@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Swal from 'sweetalert2';
 import React, {useEffect ,useState } from 'react'
 
 export default function Home() {
@@ -24,9 +25,25 @@ export default function Home() {
          // Async-await bisa dikatakan sebagai cara mudah menggunakan JavaScript Promise yang agak sulit dipahami.
         await axios.delete("http://localhost:8000/daftarBuku/" + id)
         .then(() =>{
-            alert("Sukses Delete")
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                  )
+                  window.location.reload();
+                }
+              })
         });
-        window.location.reload();
     }
 
   return (
@@ -39,7 +56,7 @@ export default function Home() {
      <th>Deskripsi</th>
     <th>Pengarang</th>
     <th>Tahun Terbit</th>
-      <th>Action</th>
+      {localStorage.getItem("id") !== null ? <th>Action</th> :<></>}
     </tr>
     </thead>
     <tbody>
@@ -50,7 +67,7 @@ export default function Home() {
                 <td>{book.deskripsi}</td>
                 <td>{book.pengarang}</td>
                 <td>{book.tahunTerbit}</td>
-                <td>
+               {localStorage.getItem("id") !== null ?  <td>
                     <a href={"/edit/" + book.id}>
                     <button     
                      variant="warning       "
@@ -67,7 +84,7 @@ export default function Home() {
                     >
                         Delete
                     </button>
-                </td>
+                </td> : <></> }
             </tr>
         ))}
     </tbody>

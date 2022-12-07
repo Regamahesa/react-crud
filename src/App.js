@@ -2,6 +2,7 @@ import './App.css';
 import Home from "./pages/Home";
 import Edit from "./pages/Edit";
 import Navbar from "./component/NavigationBar";
+import Login from "./pages/Login";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
           <Switch>
             <Route path="/" component={Home} exact/>
             <Route path="/edit/:id" component={Edit} exact/>
+            <Route path="/login" component={Login} exact />
           </Switch>
         </main>
         </BrowserRouter>

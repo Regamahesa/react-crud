@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { Button, Form, InputGroup } from "react-bootstrap";
+import { useHistory } from 'react-router-dom';
 export default function NavigationBar() {
    // useState di panggil dalam function component untuk menambahkan suatu state lokal.
   const [show, setShow] = useState(false);
@@ -14,6 +15,8 @@ export default function NavigationBar() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const history = useHistory();
 
   // method addBUku berfungsi menambahkan data 
   const addBuku = async (e) => {
@@ -31,9 +34,13 @@ export default function NavigationBar() {
     } catch (error) {
       console.log(error)
     }
+  };
 
-
-  }
+  const logout = () => {
+    window.location.reload();
+    localStorage.clear();
+    history.push("/login");
+  };
 
   return (
     <div>
@@ -46,28 +53,26 @@ export default function NavigationBar() {
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                <a class="nav-link active" aria-current="page" href="/">Table</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-              </li>
-              <li class="nav-item">
+              {localStorage.getItem("id") !== null ? (
+                <>
+                 <li class="nav-item">
                 <button class="nav-link" onClick={handleShow}>Tambah BUKU</button>
               </li>
+              <li className="nav-item float-right">
+                <a className="btn" onClick={logout}>
+                  LogOut
+                </a>
+              </li>
+                </>
+              ) : (
+                <li className="nav-item float-right">
+                  <a className="btn" href="/login">
+                    Login
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         </div>
@@ -108,7 +113,7 @@ export default function NavigationBar() {
                 <strong>Tahun Terbit</strong>
               </Form.Label>
               <InputGroup className="d-flex gap-3">
-                <Form.Control placeholder="Massukkan Pengarang" value={tahunTerbit} onChange={(e) => setTahunTerbit(e.target.value)} />
+                <Form.Control type="Date" placeholder="Massukkan Pengarang" value={tahunTerbit} onChange={(e) => setTahunTerbit(e.target.value)} />
               </InputGroup>
             </div>
           </Modal.Body>

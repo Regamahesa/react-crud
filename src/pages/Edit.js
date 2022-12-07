@@ -97,6 +97,7 @@ export default function Edit() {
                   <div className="d-flex gap-3">
                   <InputGroup className="d-flex gap-3">
                     <Form.Control
+                    type="Date"
                     placeholder="TahunTerbit"
                     value={tahunTerbit}
                     onChange={(e) => setTahunTerbit(e.target.value)} />

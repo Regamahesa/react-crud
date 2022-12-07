@@ -1,18 +1,25 @@
 {
+  "users": [
+    {
+      "id": 1,
+      "username": "rega",
+      "password": "123"
+    }
+  ],
   "daftarBuku": [
     {
       "judul": "Si kancil",
       "deskripsi": "Si kancil pencuri timun",
-      "tahunTerbit": "2010",
       "pengarang": "M.B. Rahimsyah A.R. ",
+      "tahunTerbit": "2022-12-30",
       "id": 1
     },
     {
-      "id": 2,
       "judul": "Keong emas",
       "deskripsi": "Cerita rakyat keong mas yang melegenda",
-      "tahunTerbit": "2010",
-      "pengarang": "Arni Windana"
+      "pengarang": "Arni Windana",
+      "tahunTerbit": "2022-12-12",
+      "id": 2
     }
   ]
 }
