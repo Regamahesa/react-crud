@@ -1,7 +1,9 @@
 import axios from "axios";
 import React from 'react'
+import "../style/Navbar.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
+import Swal from 'sweetalert2'
 import Modal from 'react-bootstrap/Modal';
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { useHistory } from 'react-router-dom';
@@ -30,7 +32,15 @@ export default function NavigationBar() {
         pengarang: pengarang,
         tahunTerbit: tahunTerbit
       })
+      Swal.fire({
+        icon: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      setTimeout(() => {
       window.location.reload();
+      }, 1000)
     } catch (error) {
       console.log(error)
     }
@@ -44,21 +54,21 @@ export default function NavigationBar() {
 
   return (
     <div>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/">Navbar</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid  navbar">
+          <a className="navbar-brand" href="/">Navbar</a>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Table</a>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="/">Table</a>
               </li>
               {localStorage.getItem("id") !== null ? (
                 <>
-                 <li class="nav-item">
-                <button class="nav-link" onClick={handleShow}>Tambah BUKU</button>
+                 <li className="nav-item">
+                <button className="nav-link" onClick={handleShow} style={{border: "none", backgroundColor:"#009EFF"}}>Tambah BUKU</button>
               </li>
               <li className="nav-item float-right">
                 <a className="btn" onClick={logout}>

@@ -10,15 +10,15 @@
     {
       "judul": "Si kancil",
       "deskripsi": "Si kancil pencuri timun",
-      "pengarang": "M.B. Rahimsyah A.R. ",
+      "pengarang": "M.B. Rahimsyah A.R. 4",
       "tahunTerbit": "2022-12-30",
       "id": 1
     },
     {
-      "judul": "Keong emas",
-      "deskripsi": "Cerita rakyat keong mas yang melegenda",
-      "pengarang": "Arni Windana",
-      "tahunTerbit": "2022-12-12",
+      "judul": "Harry potter",
+      "deskripsi": "Sekolah penyihir",
+      "pengarang": "J. K. Rowling",
+      "tahunTerbit": "2009-12-19",
       "id": 2
     }
   ]
